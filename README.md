@@ -1,12 +1,14 @@
 # TypescriptSyntaxPaste
 
-- Visual Studio Extension which converts C# SYNTAX to Typescript SYNTAX, you just need to Copy C# code, and paste into Typescript.ts source code.    
+- Visual Studio 2019 (Upgraded) Extension which converts C# Syntax to Typescript Syntax, you just need to Copy C# code, and paste into Typescript.ts source code.    
 
 - There is option which will convert class/struct to Typescript interface. (In VS 2015 goto Tool->Option->Typescript Paste-> Convert to interface:true)    
 
+For older version of VS (2015 or 2017) please check GitHub nhabuiduc/TypescriptSyntaxPaste
+
 **HOW TO DEBUG/RUN.**    
 
-Need Visual Studio 2015 + install VS 2015 SDK to compile and run this extension.        
+Need Visual Studio 2019 + install VS SDK to compile and run this extension.        
 Then you need to configure project to allow you debug with VS 2015: go to project Property, Debug tab -> 
 - Select Start External Program, and fill your VS2015 path (example: C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\devenv.exe)
 - Command line arguments: /rootsuffix Exp
