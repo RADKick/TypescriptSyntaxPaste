@@ -1,11 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.CodeAnalysis.CSharp;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace RoslynTypeScript.Translation
 {
@@ -20,7 +13,7 @@ namespace RoslynTypeScript.Translation
         public ExpressionTranslation Expression { get; set; }
         public SimpleNameTranslation Name { get; set; }
 
-        public bool IsInInvocation { get; set; }       
+        public bool IsInInvocation { get; set; }
 
         public MemberAccessExpressionTranslation(MemberAccessExpressionSyntax syntax, SyntaxTranslation parent) : base(syntax, parent)
         {
@@ -58,7 +51,7 @@ namespace RoslynTypeScript.Translation
         {
 
             string str = Syntax.ToString();
-    
+
             return NormalTranslate();
         }
 

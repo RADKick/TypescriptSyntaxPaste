@@ -1,10 +1,4 @@
 ﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
-using RoslynTypeScript.Translation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoslynTypeScript.Translation
 {
@@ -32,7 +26,8 @@ namespace RoslynTypeScript.Translation
         public bool ExcludeDefaultValue
         {
             get { return excludeDefaultValue; }
-            set {
+            set
+            {
                 excludeDefaultValue = value;
                 foreach (var item in Parameters.GetEnumerable())
                 {

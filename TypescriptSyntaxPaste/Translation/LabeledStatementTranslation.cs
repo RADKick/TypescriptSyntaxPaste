@@ -1,11 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RoslynTypeScript.Patch;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace RoslynTypeScript.Translation
 {
@@ -28,7 +21,7 @@ namespace RoslynTypeScript.Translation
         public override void ApplyPatch()
         {
             base.ApplyPatch();
-            
+
         }
 
         public bool TakeCare { get; set; }
@@ -39,7 +32,7 @@ namespace RoslynTypeScript.Translation
         {
 
             //string add = TakeCare ? "(^_^)" :"";
-            string label = IgnoreLabel ? string.Empty : Syntax.Identifier.ToString() + ":"; 
+            string label = IgnoreLabel ? string.Empty : Syntax.Identifier.ToString() + ":";
             return $@"{label}
                  {Statement.Translate()}";
         }

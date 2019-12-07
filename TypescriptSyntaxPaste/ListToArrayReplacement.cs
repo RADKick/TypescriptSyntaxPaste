@@ -1,11 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.Linq;
 
 namespace TypescriptSyntaxPaste
 {
@@ -28,7 +24,7 @@ namespace TypescriptSyntaxPaste
             }
 
             return ToArray(node);
-                
+
         }
 
         public override SyntaxNode VisitQualifiedName(QualifiedNameSyntax node)
@@ -52,7 +48,7 @@ namespace TypescriptSyntaxPaste
             }
 
             var found = FindListNode(node);
-            if(found == null)
+            if (found == null)
             {
                 return base.VisitObjectCreationExpression(node);
             }
@@ -96,7 +92,7 @@ namespace TypescriptSyntaxPaste
         public static CSharpSyntaxNode ReplaceList(CSharpSyntaxNode syntaxNode)
         {
             return (CSharpSyntaxNode)new ListToArrayReplacementRewriter().Visit(syntaxNode);
-             
+
         }
     }
 }

@@ -1,10 +1,5 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoslynTypeScript.Translation
 {
@@ -32,7 +27,7 @@ namespace RoslynTypeScript.Translation
             get
             {
                 var semantic = GetSemanticModel();
-                if(semantic == null)
+                if (semantic == null)
                 {
                     return false;
                 }
@@ -58,7 +53,7 @@ namespace RoslynTypeScript.Translation
                 }
 
                 var symbolInfo = semantic.GetSymbolInfo(this.Syntax);
-                if (symbolInfo.Symbol != null )
+                if (symbolInfo.Symbol != null)
                 {
                     return symbolInfo.Symbol.IsStatic;
                 }
@@ -70,7 +65,7 @@ namespace RoslynTypeScript.Translation
         protected override string InnerTranslate()
         {
             string syntaxStr = Syntax.ToString();
-             syntaxStr = Helper.NormalizeVariabeleName(syntaxStr);
+            syntaxStr = Helper.NormalizeVariabeleName(syntaxStr);
 
             // hopefully we guess right
             if (syntaxStr == "DateTime" && !(Parent is TypeTranslation))
@@ -86,7 +81,7 @@ namespace RoslynTypeScript.Translation
             if (!DetectApplyThis && TypeArgumentList != null)
             {
                 return $"{syntaxStr}{TypeArgumentList.Translate()}";
-            }          
+            }
 
             if (IsArrayType(syntaxStr))
             {
@@ -110,7 +105,7 @@ namespace RoslynTypeScript.Translation
             }
 
             return syntaxStr;
-        }       
+        }
 
         public bool IsInnerType(ISymbol symbol)
         {
@@ -136,7 +131,7 @@ namespace RoslynTypeScript.Translation
             }
 
             SemanticModel semanticModel = GetSemanticModel();
-            if(semanticModel == null)
+            if (semanticModel == null)
             {
                 return false;
             }

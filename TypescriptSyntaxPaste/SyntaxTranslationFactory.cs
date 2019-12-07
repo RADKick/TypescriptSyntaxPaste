@@ -1,11 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 
 namespace RoslynTypeScript.Translation
@@ -39,7 +35,7 @@ namespace RoslynTypeScript.Translation
 
         private static Type FindMatchedType(Type type)
         {
-            if(_mapType.ContainsKey(type))
+            if (_mapType.ContainsKey(type))
             {
                 return _mapType[type];
             }
@@ -60,9 +56,9 @@ namespace RoslynTypeScript.Translation
             return "RoslynTypeScript.Translation." + name + "Translation";
         }
 
-        public static void RegisterType<TSyntax,TTransaltion>()
-            where TSyntax :SyntaxNode
-            where TTransaltion :SyntaxTranslation
+        public static void RegisterType<TSyntax, TTransaltion>()
+            where TSyntax : SyntaxNode
+            where TTransaltion : SyntaxTranslation
         {
             _mapType[typeof(TSyntax)] = typeof(TTransaltion);
         }

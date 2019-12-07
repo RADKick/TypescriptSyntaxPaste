@@ -1,18 +1,11 @@
 ﻿using EnvDTE;
 using EnvDTE80;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.OLE.Interop;
-using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Editor;
 using Microsoft.VisualStudio.TextManager.Interop;
-using RoslynTypeScript.Translation;
 using System;
 using System.Windows.Forms;
-using System.Linq;
-using Microsoft.VisualStudio.Shell;
 using TypescriptSyntaxPaste.VSIX;
 
 namespace TypescriptSyntaxPaste
@@ -33,13 +26,13 @@ namespace TypescriptSyntaxPaste
             _textView = textView;
             _dte = dte;
             adapter.AddCommandFilter(this, out _nextCommandTarget);
-           // this.package = package;
+            // this.package = package;
         }
 
-        
+
 
         public int Exec(ref Guid pguidCmdGroup, uint nCmdID, uint nCmdexecopt, IntPtr pvaIn, IntPtr pvaOut)
-        {           
+        {
             if (HandlePasteCommand(pguidCmdGroup, nCmdID))
             {
                 return VSConstants.S_OK;
@@ -78,23 +71,23 @@ namespace TypescriptSyntaxPaste
                 return false;
             }
 
-            string text = Clipboard.GetText(TextDataFormat.Text);     
+            string text = Clipboard.GetText(TextDataFormat.Text);
 
             var typescriptCode = csharpToTypescriptConverter.ConvertToTypescript(text, SettingStore.Instance);
 
-            if (typescriptCode == null) return false;            
+            if (typescriptCode == null) return false;
 
             InsertIntoDocument(doc, typescriptCode);
 
             return true;
         }
-        
+
         private bool ShouldHandleThisCommand(Guid pguidCmdGroup, uint nCmdID)
         {
             return !(pguidCmdGroup == _guid && nCmdID == _commandId && Clipboard.ContainsText());
         }
 
-        
+
 
         private void InsertIntoDocument(EnvDTE.TextDocument doc, string typescriptCode)
         {
@@ -125,8 +118,8 @@ namespace TypescriptSyntaxPaste
                 {
                     _dte.ExecuteCommand("Edit.FormatSelection");
                 }
-               
+
             }
-        }       
+        }
     }
 }

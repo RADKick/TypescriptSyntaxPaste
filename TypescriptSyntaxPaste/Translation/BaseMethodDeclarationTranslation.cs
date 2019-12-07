@@ -1,10 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace RoslynTypeScript.Translation
 {
@@ -16,7 +10,7 @@ namespace RoslynTypeScript.Translation
             set { base.Syntax = value; }
         }
         public BaseMethodDeclarationTranslation() { }
-        public BaseMethodDeclarationTranslation(BaseMethodDeclarationSyntax syntax,  SyntaxTranslation parent) : base(syntax, parent)
+        public BaseMethodDeclarationTranslation(BaseMethodDeclarationSyntax syntax, SyntaxTranslation parent) : base(syntax, parent)
         {
             ParameterList = syntax.ParameterList.Get<ParameterListTranslation>(this);
             Modifiers = syntax.Modifiers.Get(this);
@@ -25,7 +19,7 @@ namespace RoslynTypeScript.Translation
         }
 
 
-        public ParameterListTranslation ParameterList { get; set; }        
+        public ParameterListTranslation ParameterList { get; set; }
         public SyntaxTokenListTranslation Modifiers { get; set; }
         public BlockTranslation Body { get; set; }
         public TokenTranslation SemicolonToken { get; set; }
@@ -40,11 +34,11 @@ namespace RoslynTypeScript.Translation
 
         public override void ApplyPatch()
         {
-            base.ApplyPatch();                                   
+            base.ApplyPatch();
         }
 
         protected override string InnerTranslate()
-        {           
+        {
             return Syntax.ToString();
         }
 

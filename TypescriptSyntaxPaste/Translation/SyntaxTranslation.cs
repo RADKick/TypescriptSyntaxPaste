@@ -2,11 +2,8 @@
 using RoslynTypeScript.Contract;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace RoslynTypeScript.Translation
 {
@@ -42,7 +39,7 @@ namespace RoslynTypeScript.Translation
         public Compilation Compilation { get; set; }
 
         public virtual string Translate()
-        {           
+        {
 
             var result = string.Empty;
 

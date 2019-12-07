@@ -1,25 +1,21 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.Editing;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TypescriptSyntaxPaste
 {
     public class ClassToInterfaceReplacement
     {
         public static CSharpSyntaxNode ReplaceClass(CSharpSyntaxNode syntaxNode)
-        {   
+        {
             IEnumerable<TypeDeclarationSyntax> allClassSyntaxes = syntaxNode.DescendantNodesAndSelf().OfType<ClassDeclarationSyntax>();
             IEnumerable<TypeDeclarationSyntax> allStructSyntaxes = syntaxNode.DescendantNodesAndSelf().OfType<StructDeclarationSyntax>();
 
             var newSyntaxNode = syntaxNode;
             TypeDeclarationSyntax currentSyntax;
-            while((currentSyntax = FindTypeDeclrationToReplace(newSyntaxNode))!= null)
+            while ((currentSyntax = FindTypeDeclrationToReplace(newSyntaxNode)) != null)
             {
                 newSyntaxNode = newSyntaxNode.ReplaceNode(currentSyntax, MakeInterface(currentSyntax));
             }

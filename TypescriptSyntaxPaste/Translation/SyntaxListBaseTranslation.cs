@@ -1,10 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using RoslynTypeScript.Contract;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoslynTypeScript.Translation
 {
@@ -47,7 +44,7 @@ namespace RoslynTypeScript.Translation
             Remove(new[] { translation });
         }
 
-        public void Insert(int position,SyntaxTranslation translation)
+        public void Insert(int position, SyntaxTranslation translation)
         {
             SyntaxCollection.Insert(position, translation);
             translation.Parent = this;
@@ -88,12 +85,12 @@ namespace RoslynTypeScript.Translation
         public SyntaxListBaseTranslation()
         { }
 
-        public SyntaxListBaseTranslation(SyntaxTranslation parent) : base( parent)
+        public SyntaxListBaseTranslation(SyntaxTranslation parent) : base(parent)
         {
 
         }
 
-       
+
 
         public IEnumerable<ST> GetEnumerable()
         {
@@ -105,6 +102,6 @@ namespace RoslynTypeScript.Translation
             return SyntaxCollection.Where(f => f is TT).Select(f => (TT)f).ToArray();
         }
 
-  
+
     }
 }

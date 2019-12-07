@@ -1,13 +1,5 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RoslynTypeScript.Patch;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 using RoslynTypeScript.Contract;
-using RoslynTypeScript.Constants;
 
 namespace RoslynTypeScript.Translation
 {
@@ -20,8 +12,8 @@ namespace RoslynTypeScript.Translation
         }
         //public StructDeclarationTranslation() { }
         public StructDeclarationTranslation(StructDeclarationSyntax syntax, SyntaxTranslation parent) : base(syntax, parent)
-        {              
-            if(BaseList == null)
+        {
+            if (BaseList == null)
             {
                 BaseList = new BaseListTranslation();
                 BaseList.Parent = this;

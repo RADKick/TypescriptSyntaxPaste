@@ -1,10 +1,5 @@
 ﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 using RoslynTypeScript.Translation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoslynTypeScript.Patch
 {
@@ -17,9 +12,9 @@ namespace RoslynTypeScript.Patch
         public void Apply(BaseTypeDeclarationTranslation typeDeclarationTranslation)
         {
             // TODO: only support one level, why do you need nested > 1 level ?
-            TypeDeclarationTranslation outerMemberDeclaration = 
+            TypeDeclarationTranslation outerMemberDeclaration =
                 (TypeDeclarationTranslation)typeDeclarationTranslation.TravelUpNotMe(f => f is TypeDeclarationTranslation);
-            if(outerMemberDeclaration==null)
+            if (outerMemberDeclaration == null)
             {
                 return;
             }
@@ -31,7 +26,7 @@ namespace RoslynTypeScript.Patch
             SyntaxListBaseTranslation outerSyntaxListBaseTranslation = (SyntaxListBaseTranslation)outerMemberDeclaration.Parent;
             var newNamespace = CreateNewNamespace(outerMemberDeclaration.Syntax.Identifier.ToString(), typeDeclarationTranslation);
             outerSyntaxListBaseTranslation.Add(newNamespace);
-            
+
         }
 
         private NamespaceDeclarationTranslation CreateNewNamespace(string identifier, BaseTypeDeclarationTranslation typeDeclarationTranslation)

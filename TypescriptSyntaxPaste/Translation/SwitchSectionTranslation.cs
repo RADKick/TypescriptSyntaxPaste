@@ -1,11 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.Linq;
 
 namespace RoslynTypeScript.Translation
 {
@@ -23,8 +19,8 @@ namespace RoslynTypeScript.Translation
             Labels = syntax.Labels.Get<SwitchLabelSyntax, SwitchLabelTranslation>(this);
             Statements = syntax.Statements.Get<StatementSyntax, StatementTranslation>(this);
         }
-        public SyntaxListTranslation<SwitchLabelSyntax,SwitchLabelTranslation> Labels { get; set; }
-        public SyntaxListTranslation<StatementSyntax,StatementTranslation> Statements { get; set; }
+        public SyntaxListTranslation<SwitchLabelSyntax, SwitchLabelTranslation> Labels { get; set; }
+        public SyntaxListTranslation<StatementSyntax, StatementTranslation> Statements { get; set; }
 
         public bool IsDefaultCase
         {

@@ -1,10 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace RoslynTypeScript.Translation
 {
@@ -17,7 +11,7 @@ namespace RoslynTypeScript.Translation
         }
 
         public BaseTypeTranslation() { }
-        public BaseTypeTranslation(BaseTypeSyntax syntax,  SyntaxTranslation parent) : base(syntax, parent)
+        public BaseTypeTranslation(BaseTypeSyntax syntax, SyntaxTranslation parent) : base(syntax, parent)
         {
             Type = syntax.Type.Get<TypeTranslation>(this);
         }

@@ -1,10 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace RoslynTypeScript.Translation
 {
@@ -15,7 +9,7 @@ namespace RoslynTypeScript.Translation
             get { return (AwaitExpressionSyntax)base.Syntax; }
             set { base.Syntax = value; }
         }
-        
+
         public AwaitExpressionTranslation() { }
         public AwaitExpressionTranslation(AwaitExpressionSyntax syntax, SyntaxTranslation parent) : base(syntax, parent)
         {

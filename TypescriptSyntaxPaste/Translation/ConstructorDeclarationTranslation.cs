@@ -1,10 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace RoslynTypeScript.Translation
 {
@@ -50,7 +44,7 @@ namespace RoslynTypeScript.Translation
             if (SemicolonToken == null || SemicolonToken.IsEmpty)
             {
                 string baseCall = string.Empty;
-                if(Initializer!=null)
+                if (Initializer != null)
                 {
                     return $@" {identifier} {ParameterList.Translate()}
                         {{

@@ -1,10 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoslynTypeScript.Translation
 {
@@ -34,7 +30,7 @@ namespace RoslynTypeScript.Translation
             {
                 var semantic = GetSemanticModel();
                 var typeInfo = semantic.GetTypeInfo(Type.ElementType.Syntax);
-                
+
                 string size = Type.RankSpecifiers.GetEnumerable().First().Sizes.Translate();
                 return $"new Array({size})";
             }

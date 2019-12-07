@@ -1,10 +1,5 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoslynTypeScript.Translation
 {
@@ -44,10 +39,10 @@ namespace RoslynTypeScript.Translation
                     case SpecialType.System_Int64:
                     case SpecialType.System_UInt64:
                         return "8";
-                    
+
                 }
             }
-            
+
             return $"__sizeof__({Syntax.Type.ToString()})";
         }
     }

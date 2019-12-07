@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.Settings;
-using Microsoft.VisualStudio.Shell.Settings;
+﻿using Microsoft.VisualStudio.Settings;
 using Microsoft.VisualStudio.Shell;
-using System.Xml.Serialization;
+using Microsoft.VisualStudio.Shell.Settings;
 using System.IO;
+using System.Xml.Serialization;
 
 namespace TypescriptSyntaxPaste.VSIX
 {
@@ -28,7 +23,7 @@ namespace TypescriptSyntaxPaste.VSIX
         protected SettingStore()
         {
             SettingsManager settingsManager = new ShellSettingsManager(ServiceProvider.GlobalProvider);
-             userSettingsStore = settingsManager.GetWritableSettingsStore(SettingsScope.UserSettings);
+            userSettingsStore = settingsManager.GetWritableSettingsStore(SettingsScope.UserSettings);
             if (!userSettingsStore.CollectionExists(CollectionPath))
             {
                 userSettingsStore.CreateCollection(CollectionPath);
@@ -57,15 +52,16 @@ namespace TypescriptSyntaxPaste.VSIX
         {
             get
             {
-                if (!userSettingsStore.PropertyExists(CollectionPath, IsConvertToInterfaceConst)){
+                if (!userSettingsStore.PropertyExists(CollectionPath, IsConvertToInterfaceConst))
+                {
                     return false;
                 }
 
-                return userSettingsStore.GetBoolean(CollectionPath,IsConvertToInterfaceConst);
+                return userSettingsStore.GetBoolean(CollectionPath, IsConvertToInterfaceConst);
             }
             set
             {
-                
+
                 userSettingsStore.SetBoolean(CollectionPath, IsConvertToInterfaceConst, value);
             }
         }
@@ -113,7 +109,7 @@ namespace TypescriptSyntaxPaste.VSIX
         {
             get
             {
-                if(replacedTypeNameArray != null)
+                if (replacedTypeNameArray != null)
                 {
                     return replacedTypeNameArray;
                 }
@@ -140,7 +136,7 @@ namespace TypescriptSyntaxPaste.VSIX
                 }
 
                 return replacedTypeNameArray;
-                 
+
             }
             set
             {
@@ -149,7 +145,7 @@ namespace TypescriptSyntaxPaste.VSIX
                     serializer.Serialize(textWriter, value);
                     userSettingsStore.SetString(CollectionPath, ReplacedTypeNameArrayConst, textWriter.ToString());
                     replacedTypeNameArray = value;
-                }       
+                }
             }
         }
 

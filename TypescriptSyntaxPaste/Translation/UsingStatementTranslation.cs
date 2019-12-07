@@ -1,10 +1,5 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoslynTypeScript.Translation
 {
@@ -44,7 +39,7 @@ namespace RoslynTypeScript.Translation
 
             string variable = Declaration?.Variables.GetEnumerable().First().Identifier.ToString() ?? "__temp";
             string block = Statement.Translate();
-            if(!(Statement is BlockTranslation))
+            if (!(Statement is BlockTranslation))
             {
                 block = $@"{{
                     {block}
@@ -58,7 +53,7 @@ namespace RoslynTypeScript.Translation
                 finally {{
                 {callDisposable} 
                 }}";
-            
+
 
             //return Syntax.ToString();
         }

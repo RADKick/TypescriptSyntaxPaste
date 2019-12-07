@@ -1,12 +1,6 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 using RoslynTypeScript.Contract;
 using RoslynTypeScript.Patch;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoslynTypeScript.Translation
 {
@@ -29,7 +23,7 @@ namespace RoslynTypeScript.Translation
             Identifier = syntax.Identifier.Get(this);
             TypeParameterList = syntax.TypeParameterList.Get<TypeParameterListTranslation>(this);
             ConstraintClauses = syntax.ConstraintClauses.Get<TypeParameterConstraintClauseSyntax, TypeParameterConstraintClauseTranslation>(this);
-            
+
         }
 
         //public SyntaxList<TypeParameterConstraintClauseSyntax> ConstraintClauses { get; }
@@ -60,17 +54,18 @@ namespace RoslynTypeScript.Translation
             }
 
             var clssStr = GetAncestor<ClassStructDeclarationTranslation>();
-            if(clssStr == null || clssStr.TypeParameterList == null)
+            if (clssStr == null || clssStr.TypeParameterList == null)
             {
                 return;
             }
 
-            if(this.TypeParameterList != null)
+            if (this.TypeParameterList != null)
             {
                 return;
             }
 
-            this.TypeParameterList = new TypeParameterListTranslation() {
+            this.TypeParameterList = new TypeParameterListTranslation()
+            {
                 Parent = this,
                 SyntaxString = clssStr.TypeParameterList.Translate()
             };
@@ -98,7 +93,7 @@ namespace RoslynTypeScript.Translation
 
             string appendStr = ";";
             var found = (TypeDeclarationTranslation)TravelUpNotMe(f => f is TypeDeclarationTranslation);
-            if(found is ClassDeclarationTranslation && found.Modifiers.IsAbstract && !this.IsOverloadedDeclaration)
+            if (found is ClassDeclarationTranslation && found.Modifiers.IsAbstract && !this.IsOverloadedDeclaration)
             {
                 appendStr = "{ throw new Error('not implemented'); }";
             }

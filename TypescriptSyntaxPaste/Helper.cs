@@ -1,19 +1,16 @@
 ﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using RoslynTypeScript.Constants;
 using RoslynTypeScript.Translation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.RegularExpressions;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.CodeAnalysis.CSharp;
 
 namespace RoslynTypeScript
 {
     public static class Helper
-    {    
+    {
         public static string GetAttributeList(SyntaxList<AttributeListSyntax> attributeList)
         {
             var attr = attributeList.ToString();
@@ -50,7 +47,7 @@ namespace RoslynTypeScript
 
         public static string GetNewLineIfExist(SyntaxTriviaList triviaList)
         {
-            return triviaList.Any(f=>f.IsKind(SyntaxKind.EndOfLineTrivia)) ? Environment.NewLine : "";
+            return triviaList.Any(f => f.IsKind(SyntaxKind.EndOfLineTrivia)) ? Environment.NewLine : "";
         }
 
         public static bool IsInKinds(SyntaxNode node, params SyntaxKind[] kinds)
@@ -80,12 +77,12 @@ namespace RoslynTypeScript
                     || specialType == SpecialType.System_Byte
                     || specialType == SpecialType.System_UInt16
                     || specialType == SpecialType.System_UInt32
-                    || specialType == SpecialType.System_UInt64;                    
+                    || specialType == SpecialType.System_UInt64;
         }
 
         public static bool IsUnsignedInterger(SpecialType specialType)
         {
-            return                     
+            return
                     specialType == SpecialType.System_UInt16
                     || specialType == SpecialType.System_UInt32
                     || specialType == SpecialType.System_UInt64;
@@ -424,7 +421,7 @@ namespace RoslynTypeScript
             }
 
             // what if the last part of contating namespace match with first part of prefix?
-            if(i<typePrefixSplit.Length && containingPrefixSplit.Last() == typePrefixSplit[i])
+            if (i < typePrefixSplit.Length && containingPrefixSplit.Last() == typePrefixSplit[i])
             {
                 i--;
             }
@@ -606,7 +603,7 @@ namespace RoslynTypeScript
             var identifierName = exp as IdentifierNameTranslation;
             if (identifierName != null)
             {
-              
+
 
                 var symbol = semanticModel.GetSymbolInfo(exp.Syntax);
                 var method = symbol.Symbol as IMethodSymbol;
@@ -622,7 +619,7 @@ namespace RoslynTypeScript
 
             var memberAccess = exp as MemberAccessExpressionTranslation;
             if (memberAccess != null && memberAccess.Name is IdentifierNameTranslation)
-            {                
+            {
                 var symbol = semanticModel.GetSymbolInfo(memberAccess.Name.Syntax);
                 var method = symbol.Symbol as IMethodSymbol;
                 if (method == null || method.IsStatic)

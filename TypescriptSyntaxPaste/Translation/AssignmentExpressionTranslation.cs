@@ -1,12 +1,5 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using RoslynTypeScript.Constants;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.CodeAnalysis.CSharp;
 
 namespace RoslynTypeScript.Translation
 {
@@ -38,11 +31,11 @@ namespace RoslynTypeScript.Translation
 
         protected override string InnerTranslate()
         {
-            if(OverrideOpeartor != null)
+            if (OverrideOpeartor != null)
             {
                 return $"{Left.Translate()} {OverrideOpeartor}  {Right.Translate()}";
             }
-        
+
             var operatorToken = Syntax.OperatorToken.ToString();
             if (Helper.IsInKinds(this.Syntax,
                 SyntaxKind.OrAssignmentExpression,
@@ -66,7 +59,7 @@ namespace RoslynTypeScript.Translation
             }
 
             var rightStr = Right.Translate();
-           
+
             return string.Format("{0} {1} {2}", Left.Translate(), operatorToken, rightStr);
         }
     }

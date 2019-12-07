@@ -1,9 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoslynTypeScript.Translation
 {
@@ -23,7 +20,7 @@ namespace RoslynTypeScript.Translation
 
         protected override string InnerTranslate()
         {
-            var result =  string.Join(" ", tokens.Select(f => Filter(f.Translate())));
+            var result = string.Join(" ", tokens.Select(f => Filter(f.Translate())));
             result = result.Replace("static public", "public static");
             return result;
         }
@@ -67,7 +64,7 @@ namespace RoslynTypeScript.Translation
         {
 
             var result = str.Replace("internal", "public")
-                        .Replace("volatile","")
+                        .Replace("volatile", "")
                         .Replace("override", "")
                         .Replace("readonly", "")
                         .Replace("abstract", "")

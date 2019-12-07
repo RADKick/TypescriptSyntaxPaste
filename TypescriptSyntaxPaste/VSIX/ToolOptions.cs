@@ -4,19 +4,11 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-using System;
-using System.ComponentModel.Design;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Runtime.InteropServices;
-using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
-using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.Win32;
+using System;
 using System.ComponentModel;
-using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 
 namespace TypescriptSyntaxPaste.VSIX
 {
@@ -74,7 +66,7 @@ namespace TypescriptSyntaxPaste.VSIX
         }
 
         public static ToolOptions Instance { get; set; }
-        
+
 
         #endregion
     }
@@ -90,7 +82,8 @@ namespace TypescriptSyntaxPaste.VSIX
         public bool IsConvertToInterface
         {
             get { return isConvertToInterface; }
-            set {
+            set
+            {
                 isConvertToInterface = value;
                 SettingStore.Instance.IsConvertToInterface = value;
             }

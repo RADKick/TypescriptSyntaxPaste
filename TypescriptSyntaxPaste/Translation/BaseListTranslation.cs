@@ -1,11 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RoslynTypeScript.Constants;
 
 namespace RoslynTypeScript.Translation
 {
@@ -19,7 +15,7 @@ namespace RoslynTypeScript.Translation
 
         public BaseListTranslation() { }
 
-        public BaseListTranslation(BaseListSyntax syntax,  SyntaxTranslation parent) : base(syntax, parent)
+        public BaseListTranslation(BaseListSyntax syntax, SyntaxTranslation parent) : base(syntax, parent)
         {
             Types = syntax.Types.Get<BaseTypeSyntax, BaseTypeTranslation>(this);
         }
@@ -39,7 +35,7 @@ namespace RoslynTypeScript.Translation
             return Types.GetEnumerable().Where(f => IsInterface(f.ToString())).ToArray();
         }
 
-        private bool  IsInterface(string name)
+        private bool IsInterface(string name)
         {
             return name.StartsWith("I") && name.Length > 1 && char.IsUpper(name[1]);
         }

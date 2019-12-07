@@ -1,11 +1,6 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using RoslynTypeScript.Constants;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoslynTypeScript.Translation
 {
@@ -34,7 +29,7 @@ namespace RoslynTypeScript.Translation
 
             // currently, I only support == != > < >= <=
             string originalOpeartor = Syntax.OperatorToken.ToString();
-            if(!Helper.IsSupportOperator(originalOpeartor))
+            if (!Helper.IsSupportOperator(originalOpeartor))
             {
                 throw new NotSupportedException();
             }

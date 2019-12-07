@@ -1,10 +1,7 @@
 ﻿using RoslynTypeScript.Contract;
 using RoslynTypeScript.Translation;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoslynTypeScript.Patch
 {
@@ -17,7 +14,7 @@ namespace RoslynTypeScript.Patch
         public void Apply(ITypeParameterConstraint typeDeclarationTranslation)
         {
 
-            if(typeDeclarationTranslation.TypeParameterList == null)
+            if (typeDeclarationTranslation.TypeParameterList == null)
             {
                 return;
             }

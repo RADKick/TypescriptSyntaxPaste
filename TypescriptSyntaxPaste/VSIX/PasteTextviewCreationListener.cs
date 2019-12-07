@@ -23,7 +23,7 @@ namespace TypescriptSyntaxPaste
             var textView = EditorAdaptersFactoryService.GetWpfTextView(textViewAdapter);
             var dte = ServiceProvider.GlobalProvider.GetService(typeof(DTE)) as DTE2;
 
-            
+
 
             textView.Properties.GetOrCreateSingletonProperty<PasteCommandHandler>(() => new PasteCommandHandler(textViewAdapter, textView, dte));
         }

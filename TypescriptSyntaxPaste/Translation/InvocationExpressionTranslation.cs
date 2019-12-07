@@ -1,12 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using RoslynTypeScript.Patch;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace RoslynTypeScript.Translation
 {
@@ -46,7 +38,7 @@ namespace RoslynTypeScript.Translation
             if (invocationName.EndsWith("ReferenceEquals"))
             {
                 return $"ReferenceEquals{ArgumentList.Translate()}";
-            }          
+            }
 
             var name = this.Syntax.Expression.ToString();
 
@@ -54,7 +46,7 @@ namespace RoslynTypeScript.Translation
             {
                 var memberAccess = (MemberAccessExpressionTranslation)Expression;
                 memberAccess.IsInInvocation = true;
-               
+
             }
 
             return string.Format("{0}{1}", Expression.Translate(), ArgumentList.Translate());

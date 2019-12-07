@@ -1,9 +1,9 @@
 ﻿{
     "manifestVersion": 1,
     "id": "TypescriptSyntaxPaste",
-    "version": "1.2.5",
+    "version": "1.3.0",
     "name": "Typescript Syntax Paste",
-  "publisher": "NhaBuiDuc",
+  "publisher": "RADKick",
   "tags": [
         "Typescript",
         "Conversion"

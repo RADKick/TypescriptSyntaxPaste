@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace RoslynTypeScript.Translation
 {
@@ -16,7 +15,7 @@ namespace RoslynTypeScript.Translation
             SyntaxCollection = new List<SyntaxTranslation>();
         }
 
-        public SeparatedSyntaxListTranslation(SeparatedSyntaxList<T> separatedSyntaxList, SyntaxTranslation parent) :base(parent)
+        public SeparatedSyntaxListTranslation(SeparatedSyntaxList<T> separatedSyntaxList, SyntaxTranslation parent) : base(parent)
         {
             this.separatedSyntaxList = separatedSyntaxList;
             this.Parent = parent;
@@ -42,7 +41,7 @@ namespace RoslynTypeScript.Translation
                 bd.Append(SyntaxCollection[i].Translate());
                 if (i < separatorCount)
                 {
-                    bd.Append(Seperator?? GetSeparator(i));
+                    bd.Append(Seperator ?? GetSeparator(i));
                     if (IsNewLine)
                     {
                         bd.Append(Environment.NewLine);

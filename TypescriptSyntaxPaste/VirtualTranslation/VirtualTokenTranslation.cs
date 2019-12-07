@@ -1,17 +1,12 @@
 ﻿using RoslynTypeScript.Translation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RoslynTypeScript.VirtualTranslation
 {
-    public class VirtualTokenTranslation :TokenTranslation
+    public class VirtualTokenTranslation : TokenTranslation
     {
         public string TokenStr { get; set; }
 
-         protected override string InnerTranslate()
+        protected override string InnerTranslate()
         {
             return TokenStr;
         }
